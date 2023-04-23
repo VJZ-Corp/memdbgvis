@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DebugVisualizerClass</class>
+ <widget class="QMainWindow" name="DebugVisualizerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1020</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Memory Debug Visualizer</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1922</width>
+      <height>1020</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Call Stack</string>
+     </attribute>
+     <widget class="QListWidget" name="callStackWidget">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>70</y>
+        <width>1121</width>
+        <height>831</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>You can copy a value by selecting a cell and pressing CTRL+C.</string>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>920</y>
+        <width>441</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Impact</family>
+        <pointsize>40</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Bottom of Call Stack</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>10</y>
+        <width>361</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Impact</family>
+        <pointsize>40</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Top of Call Stack</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>321</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;The Pancake Analogy&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The call stack is like a stack of pancakes! The Java Virtual Machine (JVM) has a stack of methods (pancakes) that it needs to execute (eat). The current stack frame is what &amp;quot;pancake&amp;quot; the JVM is currently &amp;quot;eating.&amp;quot; Once the JVM finishes eating the current pancake, it will start eating the next pancake on the stack. Each method call will make the JVM add a pancake onto the stack. When a method returns, a pancake is consumed and taken off the stack.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>70</y>
+        <width>241</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <italic>true</italic>
+       </font>
+      </property>
+      <property name="text">
+       <string>The current stack frame is highlighted and bolded.</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCommandLinkButton" name="learnMoreThreads">
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>420</y>
+        <width>351</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Learn more about threads!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>250</y>
+        <width>371</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The current thread of invocation is the thread that invokes the visualizer. Each Java thread has its own call stack, so this display tells you the name and priority of the current thread to resolve any ambiguity.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="threadNameView">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>160</y>
+        <width>381</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier New</family>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="lineWrapMode">
+       <enum>QTextEdit::NoWrap</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>50</y>
+        <width>381</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Current Thread of Invocation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lineNum">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>800</y>
+        <width>331</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="digitCount">
+       <number>7</number>
+      </property>
+      <property name="intValue" stdset="0">
+       <number>8888888</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>550</y>
+        <width>341</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Line Number of Invocation&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; text-decoration:none;&quot;&gt;This number shows the line of code on the caller that is responsible for invoking &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; font-style:italic; text-decoration:none;&quot;&gt;memdbgvis&lt;/span&gt;&lt;span style=&quot; font-size:12pt; text-decoration:none;&quot;&gt;. If you get an unexpected line value, make sure to check the current stack frame. It may be called from a method that is contained in another file.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>460</y>
+        <width>381</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Runtime Memory Metrics&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; text-decoration:none;&quot;&gt;The view below contains some general information about the status of the JVM. Memory usage metrics may not add up because the data is sourced from different providers. All data volume figures are reported in KiB (1 kibibyte = 1024 bytes = 8192 bits).&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="runtimeMetricsView">
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>700</y>
+        <width>381</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier New</family>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="lineWrapMode">
+       <enum>QTextEdit::NoWrap</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Local Variables</string>
+     </attribute>
+     <widget class="QTableWidget" name="localVarTableWidget">
+      <property name="geometry">
+       <rect>
+        <x>355</x>
+        <y>40</y>
+        <width>1541</width>
+        <height>901</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>You can copy a value by selecting a cell and pressing CTRL+C.</string>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <property name="horizontalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>200</number>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>500</number>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>50</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>50</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Data Type</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Variable Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Value of Variable</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>321</width>
+        <height>851</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Local Variable Table&lt;/span&gt;&lt;/p&gt;&lt;p&gt;This tab displays the &lt;span style=&quot; text-decoration: underline;&quot;&gt;current stack frame's&lt;/span&gt; local variables, which only exist within the current scope of the method. All local variables with a primitive data type have their values stored &lt;span style=&quot; font-style:italic;&quot;&gt;directly &lt;/span&gt;in the current stack frame. That means each primitive value is fixed in size, and all operations on single primitives take &lt;span style=&quot; font-style:italic;&quot;&gt;O(1)&lt;/span&gt; time. In Java, there are 8 primitive types:&lt;/p&gt;&lt;p&gt;1. &lt;span style=&quot; font-weight:700;&quot;&gt;byte:&lt;/span&gt; 8-bit signed integer&lt;/p&gt;&lt;p&gt;2. &lt;span style=&quot; font-weight:700;&quot;&gt;short:&lt;/span&gt; 16-bit signed integer&lt;/p&gt;&lt;p&gt;3. &lt;span style=&quot; font-weight:700;&quot;&gt;int: &lt;/span&gt;32-bit signed integer&lt;/p&gt;&lt;p&gt;4. &lt;span style=&quot; font-weight:700;&quot;&gt;long: &lt;/span&gt;64-bit signed integer&lt;/p&gt;&lt;p&gt;5. &lt;span style=&quot; font-weight:700;&quot;&gt;float: &lt;/span&gt;single-precision 32-bit IEEE 754 floating point&lt;/p&gt;&lt;p&gt;6. &lt;span style=&quot; font-weight:700;&quot;&gt;double: &lt;/span&gt;double-precision 64-bit IEEE 754 floating point&lt;/p&gt;&lt;p&gt;7. &lt;span style=&quot; font-weight:700;&quot;&gt;boolean: &lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;true, false&lt;/span&gt;&lt;/p&gt;&lt;p&gt;8. &lt;span style=&quot; font-weight:700;&quot;&gt;char: &lt;/span&gt;single 16-bit Unicode character&lt;/p&gt;&lt;p&gt;Primitive data types are not useful in most scenarios, as most programmers deal with more than a few bytes in their code. Java, notorious for its object-oriented design, primarily uses a dynamically allocated heap to store objects and arrays. This flexible memory is extremely useful as objects and arrays can be resized in the heap, while primitives cannot because of the call stack's fixed dimensions.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCommandLinkButton" name="learnMoreObjRef">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>890</y>
+        <width>301</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Learn about object references!</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Static Fields</string>
+     </attribute>
+     <widget class="QTableWidget" name="staticFieldsTable">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>220</y>
+        <width>1851</width>
+        <height>751</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>You can copy a value by selecting a cell and pressing CTRL+C.</string>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <property name="horizontalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>500</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>50</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Data Type</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Field Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Value of Field</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>1851</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Static (Global) Fields&lt;/span&gt;&lt;/p&gt;&lt;p&gt;In Java, besides having local variables (which are only accessible during the lifetime of the current stack frame), you can also create fields that pertain to the object rather than the method. Imagine creating a class that defines a human. Certain properties of humans (such as eye color, age, height, weight, etc.) exist throughout the lifetime of the human object. Certainly, these fields can change over time, but there needs to be memory allocated for these fields. So far, only fields belonging to an object are mentioned. However, the table below displays &lt;span style=&quot; text-decoration: underline;&quot;&gt;static or global fields, which are independent of any single object&lt;/span&gt;. Like the name &amp;quot;global&amp;quot; implies, static/global fields exist throughout the entire lifespan of the Java application and persist even when the current object is destroyed. Continuing the human object example from above, you will need a static field to display the global population. This is because the global population is independent of any specific human object. Without static fields, humans who die (object garbage collected) will effectively reset the world's global population count, which is undesirable.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;The table displayed on this tab uses the same conventions defined by the &amp;quot;Local Variables&amp;quot; tab.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Heap Inspection</string>
+     </attribute>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>1450</x>
+        <y>20</y>
+        <width>441</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Heap Inspection&lt;/span&gt;&lt;/p&gt;&lt;p&gt;This tab allows you to gain a deeper inspection of an object by querying the heap for the object's data. This can be accomplished by entering the object's reference code (something like &amp;quot;[Ljava.lang.Object;@8a58c0de&amp;quot;), which can be found in both the &amp;quot;Local Variables&amp;quot; tab and &amp;quot;Static Fields&amp;quot; tab. The text view to the left will behave according to the following scenarios:&lt;/p&gt;&lt;p&gt;1. primitive arrays (such as int[], char[], etc.) will have their values directly displayed, &lt;span style=&quot; font-weight:700;&quot;&gt;*Nested (higher-dimensional) array views are un-implemented and may have UNDEFINED/ABNORMAL behavior.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;2. non-primitive arrays (Object[], String[], etc.) will have their values displayed in the array by calling &lt;span style=&quot; font-style:italic;&quot;&gt;array[i].toString()&lt;/span&gt;, &lt;span style=&quot; font-weight:700;&quot;&gt;**Object reference codes displayed in arrays ARE INSPECTABLE ONLY IF THE REFERENCES APPEAR ELSEWHERE IN THE VISUALIZER.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;3. single objects will have their values stored as raw bytes in a hex-dump style with a unicode listing. &lt;span style=&quot; font-weight:700;&quot;&gt;***The object MUST implement the &lt;/span&gt;&lt;span style=&quot; font-weight:700; font-style:italic;&quot;&gt;java.io.Serializable &lt;/span&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;interface&lt;/span&gt;&lt;span style=&quot; font-weight:700; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; text-decoration: underline;&quot;&gt;Enter the Object's Reference Code:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>1391</width>
+        <height>941</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>32</pointsize>
+       </font>
+      </property>
+      <property name="lineWrapMode">
+       <enum>QTextEdit::WidgetWidth</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>1510</x>
+        <y>890</y>
+        <width>321</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>31</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Inspect!</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>1450</x>
+        <y>640</y>
+        <width>441</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="plainText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>[Ljava.lang.Object;@8a58c0de</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../debugvisualizer.qrc"/>
+ </resources>
+ <connections/>
+</ui>
