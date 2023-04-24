@@ -14,7 +14,7 @@ import java.util.List;
  * Its main purpose is to invoke the native C++ agent which is responsible for communicating with the JVM and visualizer.
  *
  * @author VJZ
- * @version 1.0
+ * @version 1.0.0
  */
 public final class memdbgvis extends Exception {
     /**
